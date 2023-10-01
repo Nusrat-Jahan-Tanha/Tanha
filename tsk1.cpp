@@ -1,40 +1,32 @@
-class Vehicle:
-    def __init__(self, wheels, range):
-        self.wheels = wheels
-        self.range = range
+#include <iostream>
 
-    def display_info(self):
-        print("Wheels:", self.wheels)
-        print("Range:", self.range)
+class Vehicle {
+public:
+    Vehicle(int wheels, int range) : wheels(wheels), range(range) {}
+    void display() const {
+        std::cout << "Wheels: " << wheels << "\nRange: " << range << std::endl;
+    }
 
+private:
+    int wheels;
+    int range;
+};
 
-class Car(Vehicle):
-    def __init__(self, wheels, range, passengers):
-        super().__init__(wheels, range)
-        self.passengers = passengers
+class Car : public Vehicle {
+public:
+    Car(int wheels, int range, int passengers) : Vehicle(wheels, range), passengers(passengers) {}
+    void display() const {
+        std::cout << "Car:\n";
+        Vehicle::display();
+        std::cout << "Passengers: " << passengers << std::endl;
+    }
 
-    def display_info(self):
-        print("Car:")
-        super().display_info()
-        print("Passengers:", self.passengers)
+private:
+    int passengers;
+};
 
+class Truck : public Vehicle {
+public:
+    Truck(int wheels, int range, int loadLimit) : Vehicle(wheels, range), loadLimit(loadLimit) {}
 
-class Truck(Vehicle):
-    def __init__(self, wheels, range, load_limit):
-        super().__init__(wheels, range)
-        self.load_limit = load_limit
-
-    def display_info(self):
-        print("Truck:")
-        super().display_info()
-        print("Load Limit:", self.load_limit)
-
-
-if __name__ == "__main__":
-    c = Car(4, 500, 5)
-    t = Truck(12, 1200, 3000)
-
-    c.display_info()
-    print()
-    t.display_info()
 
