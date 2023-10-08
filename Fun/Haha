@@ -4,7 +4,7 @@
 using namespace std;
 
 class Person
-
+{
 public:
 
 string name:
@@ -14,14 +14,13 @@ int age:
 string address:
 
 Person (string a, int b. string c)
+{
+name =a;
 
-name
-
-a:
-
-age b: address
-
-void display (
+age b;
+address = c;
+}
+void display ()
 
 cout
 
